@@ -4,13 +4,13 @@
 	<title>gif me beautiful</title>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<!--<link rel="stylesheet" type="text/css" href="css/reset.css">-->
+	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="css/style.css">
-	
 </head>
 <body>
 
-	<div class="container-flex">
-		<h1>Gif-Tastic!</h1>
+	<div class="container-flex col-md-12" >
+		<h1>Giphy Noir...</h1>
 	
 	<div id="gifsgohere"></div>
 	
@@ -22,8 +22,9 @@
 		<input id="gif-add" type="submit" value="What Say You">
 	</form>
 
-
-	<div id="gifme"></div>
+	<div class="container">
+	<div id="gifme" class="row"></div>
+	</div>
 
 
 
@@ -36,55 +37,7 @@
 
 
 
-<!--<script type="text/javascript">
-	
-	// start with an array of "topics"
-	var mood = ["Black Excelence", "Jazz", "Hip Hop", "Soul Music", "Black Girl Magic", "Black Boy Joy", "Woke", "Black Love", "Shimmy", "Melanin", "Bey-Hive"]
-	console.log(mood);
-	// using "topics" create buttons
-	function showButton() {
 
-		$("#gifsgohere").empty();
-
-		// loop through array
-		for (var i = 0; i < mood.length; i++) {
-
-		// buttons should dynamically popluate page
-		var p = $("<button>");
-		p.addClass("more");
-        p.attr("data-name", mood[i]);
-		p.text(mood[i]);
-        $("#gifsgohere").append(p);
-		}
-	}
-
-	// upon click of submit button
-	$("#gif-add").on("click", function(event) {
-    event.preventDefault();
-	// capture "topics"
-	// create form field "input"
-	var topics = $("#gif-in").val().trim();
-	mood.push(topics);
-	showButton();
-	});
-
-	showButton();
-	
-
-	// our AJAX call
-
-	var more = $(this).attr("data-name");
-	var queryURL = "http://api.giphy.com/v1/gifs/search?q=" + more + "&api_key=nWlYdIj7aYQqIEfaj7GjKpJ39Le309SB&limit=10";
-		console.log(queryURL);
-
-		$.ajax({
-			url : queryURL, 
-			method: "GET"
-		}).done(function(response) {
-
-		});	
-
-</script>-->
 <script src="js/app.js" type="text/javascript"></script>
 </body>
 </html>

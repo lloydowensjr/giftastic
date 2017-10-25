@@ -23,7 +23,7 @@
 		var results = response.data;	
 		for(var i = 0; i < results.length; i++){
 		// create <div> to display gifs and rating
-		var gifMe = $("<div class='more'>");
+		var gifMe = $("<div class='giphy col-md-3'>");
 		// must grab and display rating
 		var rating = results[i].rating;
 
@@ -88,8 +88,25 @@
 
 	
 	
-	// an intial click of gif should animate gif
-	// once clicked second time gif should go back to static state
+	
+
+	$(".giphy").on("click", function() {
+      
+      var state = $(this).attr("data-state");
+      
+     //an intial click of gif should animate gif  
+     //once clicked second time gif should go back to static state
+      if (state === "still") {
+        $(this).attr("src", $(this).attr("data-animate"));
+        $(this).attr("data-state", "animate");
+    } else {
+        $(this).attr("src", $(this).attr("data-still"));
+        $(this).attr("data-state", "still");
+    }
+    });
+
+	
+	
 	
 	
 	

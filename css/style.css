@@ -1,6 +1,12 @@
-button,
-    div,
+div,
     form,
     input {
       margin: 10px;
     }
+
+button {
+	
+}
+.col-md-3 {
+	width: 45%;
+}
