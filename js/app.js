@@ -22,26 +22,47 @@
 		}).done(function(response){
 		var results = response.data;	
 		for(var i = 0; i < results.length; i++){
-		// create <div> to display gifs and rating
-		var gifMe = $("<div class='giphy col-md-3'>");
-		// must grab and display rating
-		var rating = results[i].rating;
+			// create <div> to display gifs and rating
+			var gifMe = $("<div class='giphy col-md-3'>");
+			// must grab and display rating
+			var rating = results[i].rating;
 
-		var plus = $("<p>").text("Rating: " + rating);
+			var plus = $("<p>").text("Rating: " + rating);
 
-		gifMe.append(plus);
-		// use the "static" link to display static gifs
-		var gifURL = results[i].images.fixed_height_still.url;
+			gifMe.append(plus);
+			// use the "static" link to display static gifs
+			//var gifURL = results[i].images.fixed_height_still.url;
 
-		var gifs = $("<img>").attr("src", gifURL);
+			var giflove = $("<img>");
+			giflove.addClass("myimages")
+			giflove.attr("data-still", results[i].images.fixed_height_still.url);
+			giflove.attr("data-animate", results[i].images.fixed_height.url);
+			giflove.attr("src", results[i].images.fixed_height_still.url);
 
-		gifMe.append(gifs);	
 
-		gifMe.prepend(plus);
-        gifMe.prepend(gifs);
-        $("#gifme").prepend(gifMe);
+			gifMe.append(giflove);	
 
-	}
+			gifMe.prepend(plus);
+	        gifMe.prepend(giflove);
+	        $("#gifme").prepend(gifMe);
+
+		}
+		
+		$(".myimages").on("click", function() {
+	      console.log("We clicked an image");
+	      //var state = $(this).attr("data-state");
+	      
+	     //an intial click of gif should animate gif  
+	     //once clicked second time gif should go back to static state
+	      if ($(this).attr("src") === $(this).attr("data-still")) {
+		    $(this).attr("src", $(this).attr("data-animate"));
+		    console.log("hi");
+		   
+			} else {
+			    $(this).attr("src", $(this).attr("data-still"));
+			    
+			}
+	    });
 
 		
 
@@ -90,20 +111,6 @@
 	
 	
 
-	$(".giphy").on("click", function() {
-      
-      var state = $(this).attr("data-state");
-      
-     //an intial click of gif should animate gif  
-     //once clicked second time gif should go back to static state
-      if (state === "still") {
-        $(this).attr("src", $(this).attr("data-animate"));
-        $(this).attr("data-state", "animate");
-    } else {
-        $(this).attr("src", $(this).attr("data-still"));
-        $(this).attr("data-state", "still");
-    }
-    });
 
 	
 	
